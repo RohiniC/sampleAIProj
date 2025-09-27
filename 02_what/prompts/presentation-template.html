@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Industrial-Scale Vibe Coding Workshop</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
+    
+    <style>
+        
+        :root {
+            --r-background-color: #0a0a0a;
+            --r-main-font: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --r-heading-font: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --r-main-color: #ffffff;
+            --r-heading-color: #ffffff;
+            --r-link-color: #00d4ff;
+            --r-link-color-hover: #00a8cc;
+            --r-selection-background-color: rgba(0, 212, 255, 0.3);
+            --r-selection-color: #ffffff;
+            --r-heading1-size: 3.3em;
+            --r-heading2-size: 2.4em;
+            --r-heading3-size: 1.95em;
+            --r-heading4-size: 1.65em;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        .reveal {
+            font-family: var(--r-main-font);
+            font-weight: 400;
+            color: var(--r-main-color);
+            font-size: 1.5em;
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            font-family: var(--r-heading-font);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-transform: none;
+            text-shadow: none;
+            word-wrap: break-word;
+        }
+
+        .reveal h1 {
+            font-size: var(--r-heading1-size);
+            margin-bottom: 0.5em;
+        }
+
+        .reveal h2 {
+            font-size: var(--r-heading2-size);
+            margin-bottom: 0.4em;
+            color: #00d4ff;
+        }
+
+        .reveal h3 {
+            font-size: var(--r-heading3-size);
+            margin-bottom: 0.3em;
+            color: #a0a0a0;
+        }
+
+        /* Title slide styling */
+        .title-slide {
+            text-align: center !important;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 2em;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .title-slide h1 {
+            font-size: 4.2em;
+            margin-bottom: 0.3em;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.95em;
+            color: #a0a0a0;
+            margin-bottom: 1em;
+            font-weight: 300;
+        }
+
+        .title-slide .instructor {
+            font-size: 1.5em;
+            color: #cccccc;
+            margin-top: 1.5em;
+        }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00d4ff, #ff007f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Build reveal animation classes */
+        .fragment {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fragment.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fragment.fade-in-then-out.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fragment.fade-in-then-out.current-fragment {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fragment.fade-out {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fragment.fade-out.visible {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Backwards build specific styling */
+        .backwards-build .step {
+            padding: 0.8em 1.2em;
+            margin: 0.5em 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #00d4ff;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .backwards-build .step.highlight {
+            background: rgba(0, 212, 255, 0.1);
+            border-left-color: #00d4ff;
+            box-shadow: 0 4px 8px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Code styling */
+        .reveal pre {
+            display: block;
+            position: relative;
+            width: 100%;
+            margin: 1em auto;
+            text-align: left;
+            font-size: 0.55em;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            line-height: 1.4em;
+            word-wrap: break-word;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            background: #1e1e1e;
+            border: 1px solid #333;
+        }
+
+        .reveal code {
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            color: #00d4ff;
+        }
+
+        /* Lists */
+        .reveal ul {
+            margin-left: 1em;
+        }
+
+        .reveal li {
+            margin-bottom: 0.5em;
+            line-height: 1.5;
+        }
+
+        .reveal li::marker {
+            color: #00d4ff;
+        }
+
+        /* Emphasis and highlights */
+        .highlight {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .emphasis {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 127, 0.2));
+            padding: 0.2em 0.5em;
+            border-radius: 6px;
+            border-left: 3px solid #00d4ff;
+        }
+
+        /* Two column layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+            align-items: start;
+        }
+
+        /* Diagram containers */
+        .diagram {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5em;
+            border-radius: 12px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+
+        /* Progress indicators */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1em 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            transition: width 0.3s ease;
+        }
+
+        /* Footer */
+        .slide-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        /* Navigation hints */
+        .nav-hint {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.7em;
+            color: #666;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .reveal h1 { font-size: 2.4em; }
+            .reveal h2 { font-size: 1.8em; }
+            .reveal { font-size: 1.2em; }
+            .two-columns { grid-template-columns: 1fr; }
+            .logo { width: 60px; height: 60px; font-size: 1.2em; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Title Slide -->
+            <section class="title-slide">
+                <div class="logo">AI</div>
+                <h1>Industrial-Scale Vibe Coding</h1>
+                <p class="subtitle">Enterprise Applications Workshop</p>
+                <div class="instructor">
+                    <p>16-Hour Workshop for Mid-Senior Developers</p>
+                    <p>Python & TypeScript Focus</p>
+                </div>
+            </section>
+
+            <!-- Workshop Overview -->
+            <section>
+                <h2>Workshop Overview</h2>
+                <div class="backwards-build">
+                    <div class="step fragment fade-in">
+                        <h3>The Challenge</h3>
+                        <p>AI tools make it easy to start building, but <span class="highlight">equally easy to get lost</span> as project complexity grows</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>The Solution</h3>
+                        <p>Understanding <span class="highlight">strengths and weaknesses</span> of both AI and humans to build applications beyond static websites</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>The Outcome</h3>
+                        <p>Enterprise-grade code generation with <span class="highlight">backwards build approach</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Backwards Build Approach -->
+            <section>
+                <h2>The Backwards Build Approach</h2>
+                <div class="two-columns">
+                    <div>
+                        <h3>Traditional Approach Fails</h3>
+                        <ul>
+                            <li class="fragment fade-in">Jump straight to code</li>
+                            <li class="fragment fade-in">Unclear requirements</li>
+                            <li class="fragment fade-in">Poor documentation</li>
+                            <li class="fragment fade-in">Difficult maintenance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="highlight">Four Pillars</h3>
+                        <div class="diagram">
+                            <div class="fragment fade-in" style="padding: 0.5em; background: rgba(0, 212, 255, 0.1); margin: 0.3em 0; border-radius: 6px;">1. Slides</div>
+                            <div class="fragment fade-in" style="padding: 0.5em; background: rgba(0, 212, 255, 0.1); margin: 0.3em 0; border-radius: 6px;">2. Documentation</div>
+                            <div class="fragment fade-in" style="padding: 0.5em; background: rgba(0, 212, 255, 0.1); margin: 0.3em 0; border-radius: 6px;">3. Tests</div>
+                            <div class="fragment fade-in" style="padding: 0.5em; background: rgba(0, 212, 255, 0.1); margin: 0.3em 0; border-radius: 6px;">4. Code</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Developer to Product Thinker Shift -->
+            <section>
+                <h2>Developer-to-Product Thinker Shift</h2>
+                <div class="backwards-build">
+                    <div class="step fragment fade-in">
+                        <h3>Beyond Technical Implementation</h3>
+                        <p>Focus on <span class="highlight">product value</span> and <span class="highlight">end-user needs</span></p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Business Objectives</h3>
+                        <p>Understand the <span class="highlight">"why"</span> behind every feature</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Value Streams</h3>
+                        <p>Think in terms of <span class="highlight">user journeys</span> rather than code blocks</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Workshop Structure -->
+            <section>
+                <h2>3-Day Workshop Structure</h2>
+                <div class="two-columns">
+                    <div>
+                        <h3>Day 1: Foundations (5 hours)</h3>
+                        <ul>
+                            <li class="fragment fade-in">Vibe Coding Introduction</li>
+                            <li class="fragment fade-in">Backwards Build Approach</li>
+                            <li class="fragment fade-in">Documentation-First Development</li>
+                            <li class="fragment fade-in">Slides and Diagrams</li>
+                        </ul>
+                        
+                        <h3>Day 2: Implementation (6 hours)</h3>
+                        <ul>
+                            <li class="fragment fade-in">Test-Driven Development with AI</li>
+                            <li class="fragment fade-in">Tool Analysis & Practice</li>
+                            <li class="fragment fade-in">Code Generation Strategies</li>
+                            <li class="fragment fade-in">Quality & Best Practices</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Day 3: Integration (5 hours)</h3>
+                        <ul>
+                            <li class="fragment fade-in">Template-First Development</li>
+                            <li class="fragment fade-in">Project Integration Workshop</li>
+                            <li class="fragment fade-in">Cost Control & Optimization</li>
+                            <li class="fragment fade-in">Bringing it All Together</li>
+                        </ul>
+                        
+                        <div class="emphasis fragment fade-in">
+                            <strong>Focus:</strong> Python & TypeScript enterprise applications with hands-on activities
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sample Project: AetherDocs -->
+            <section>
+                <h2>Sample Project: AetherDocs</h2>
+                <div class="backwards-build">
+                    <div class="step fragment fade-in">
+                        <h3>System Overview</h3>
+                        <p>AI-augmented documentation system - the <span class="highlight">"single source of truth"</span> for enterprise knowledge</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Real-time collaborative editing</li>
+                            <li>Intelligent content discovery</li>
+                            <li>Multi-format publishing (web, PDF, API docs)</li>
+                            <li>Integration with code repositories</li>
+                        </ul>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Timeline</h3>
+                        <p><span class="highlight">Dec 2025:</span> Architecture Complete → <span class="highlight">Q1 2027:</span> Enterprise Adoption</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Learning Outcomes -->
+            <section>
+                <h2>Key Learning Outcomes</h2>
+                <div class="two-columns">
+                    <div>
+                        <h3>Technical Skills</h3>
+                        <ul>
+                            <li class="fragment fade-in">AI-assisted development workflows</li>
+                            <li class="fragment fade-in">Documentation-first practices</li>
+                            <li class="fragment fade-in">Test-driven development with AI</li>
+                            <li class="fragment fade-in">Code quality and standards</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Strategic Thinking</h3>
+                        <ul>
+                            <li class="fragment fade-in">Product-focused mindset</li>
+                            <li class="fragment fade-in">User value prioritization</li>
+                            <li class="fragment fade-in">Cost optimization strategies</li>
+                            <li class="fragment fade-in">Team collaboration workflows</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="emphasis fragment fade-in">
+                    <strong>Result:</strong> Ability to leverage AI for enterprise-grade applications while maintaining focus on user value and business impact
+                </div>
+            </section>
+
+            <!-- Next Steps -->
+            <section>
+                <h2>Ready to Get Started?</h2>
+                <div class="backwards-build">
+                    <div class="step fragment fade-in">
+                        <h3>What You Need</h3>
+                        <ul>
+                            <li>Laptop with Python and Node.js/TypeScript</li>
+                            <li>Git account</li>
+                            <li>Mid-senior development experience</li>
+                        </ul>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>What You'll Get</h3>
+                        <ul>
+                            <li>Comprehensive workbook with exercises</li>
+                            <li>Template library for Python and TypeScript</li>
+                            <li>30-day post-workshop support</li>
+                        </ul>
+                    </div>
+                    <div class="step fragment fade-in highlight">
+                        <h3>Transform Your Development Practice</h3>
+                        <p>From code-first to product-first thinking</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: false,
+            touch: true,
+            loop: false,
+            rtl: false,
+            navigationMode: 'default',
+            shuffle: false,
+            fragments: true,
+            fragmentInURL: true,
+            embedded: false,
+            help: true,
+            pause: true,
+            showNotes: false,
+            autoPlayMedia: null,
+            preloadIframes: null,
+            autoAnimate: true,
+            autoAnimateMatcher: null,
+            autoAnimateEasing: 'ease',
+            autoAnimateDuration: 1.0,
+            autoAnimateUnmatched: true,
+            autoSlide: 0,
+            autoSlideStoppable: true,
+            autoSlideMethod: null,
+            defaultTiming: null,
+            mouseWheel: false,
+            rollingLinks: false,
+            hideInactiveCursor: true,
+            hideCursorTime: 5000,
+            previewLinks: false,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            parallaxBackgroundImage: '',
+            parallaxBackgroundSize: '',
+            parallaxBackgroundRepeat: '',
+            parallaxBackgroundPosition: '',
+            parallaxBackgroundHorizontal: null,
+            parallaxBackgroundVertical: null,
+            viewDistance: 3,
+            mobileViewDistance: 2,
+            display: 'block',
+            hideAddressBar: true,
+            disableLayout: false,
+
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+
+        // Add custom keyboard shortcuts
+        Reveal.addKeyBinding({keyCode: 190, key: '.', description: 'Toggle black screen'}, () => {
+            Reveal.togglePause();
+        });
+
+        // Enhanced fragment management for backwards build
+        Reveal.on('fragmentshown', event => {
+            if (event.fragment.closest('.backwards-build')) {
+                event.fragment.classList.add('highlight');
+                setTimeout(() => {
+                    event.fragment.classList.remove('highlight');
+                }, 1000);
+            }
+        });
+
+        // Auto-advance for demo mode (optional)
+        let autoAdvance = false;
+        Reveal.addKeyBinding({keyCode: 65, key: 'A', description: 'Toggle auto-advance'}, () => {
+            autoAdvance = !autoAdvance;
+            if (autoAdvance) {
+                autoAdvanceSlides();
+            }
+        });
+
+        function autoAdvanceSlides() {
+            if (!autoAdvance) return;
+            
+            setTimeout(() => {
+                if (Reveal.availableRoutes().down || Reveal.availableRoutes().right) {
+                    Reveal.next();
+                    autoAdvanceSlides();
+                } else {
+                    autoAdvance = false;
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

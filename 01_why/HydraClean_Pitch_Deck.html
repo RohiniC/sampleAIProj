@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>HydraClean Pitch Deck</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/zenburn.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/print/pdf.css" type="text/css" media="print">
+    
+    <style>
+        :root {
+            --r-background-color: #ffffff;
+            --r-main-font: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --r-heading-font: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --r-main-color: #333333;
+            --r-heading-color: #222222;
+            --r-link-color: #007AFF; /* Standard iOS Blue */
+            --r-link-color-hover: #0056b3;
+            --r-selection-background-color: rgba(0, 122, 255, 0.3);
+            --r-selection-color: #ffffff;
+            --r-heading1-size: 3.3em;
+            --r-heading2-size: 2.4em;
+            --r-heading3-size: 1.95em;
+            --r-heading4-size: 1.65em;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;4.00;600;700&display=swap');
+
+        .reveal {
+            font-family: var(--r-main-font);
+            font-weight: 400;
+            color: var(--r-main-color);
+            font-size: 1.5em;
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            font-family: var(--r-heading-font);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-transform: none;
+            text-shadow: none;
+            word-wrap: break-word;
+        }
+
+        .reveal h1 {
+            font-size: var(--r-heading1-size);
+            margin-bottom: 0.5em;
+        }
+
+        .reveal h2 {
+            font-size: var(--r-heading2-size);
+            margin-bottom: 0.4em;
+            color: var(--r-link-color);
+        }
+
+        .reveal h3 {
+            font-size: var(--r-heading3-size);
+            margin-bottom: 0.3em;
+            color: #555555;
+        }
+
+        .title-slide {
+            text-align: center !important;
+            background: linear-gradient(135deg, #f9f9f9 0%, #e9e9e9 100%);
+            color: #333;
+            padding: 2em;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .title-slide h1 {
+            font-size: 4.2em;
+            margin-bottom: 0.3em;
+            background: linear-gradient(135deg, #007AFF, #0056b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.95em;
+            color: #555555;
+            margin-bottom: 1em;
+            font-weight: 300;
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #A2D2FF, #FF8A80);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 16px rgba(162, 210, 255, 0.3);
+        }
+
+        .fragment {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fragment.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .step {
+            padding: 0.8em 1.2em;
+            margin: 0.5em 0;
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--r-link-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight {
+            color: #FF8A80; /* Coral Accent */
+            font-weight: 600;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+            align-items: start;
+        }
+
+        #fullscreen-btn, #pdf-export-btn {
+            position: fixed;
+            bottom: 20px;
+            background: rgba(0,0,0,0.2);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            padding: 8px;
+        }
+        #fullscreen-btn {
+            left: 20px;
+        }
+        #pdf-export-btn {
+            left: 60px;
+        }
+        #fullscreen-btn svg, #pdf-export-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Title Slide -->
+            <section class="title-slide">
+                <div class="logo">HC</div>
+                <h1>HydraClean</h1>
+                <p class="subtitle">Connecting Homes and Cleaners, Directly.</p>
+                <div class="instructor">
+                    <p>MVP Pitch Deck</p>
+                </div>
+                <aside class="notes">
+                  To export this presentation to PDF:
+                  1. Click the PDF button or add "?print-pdf" to the end of the URL.
+                  2. Press Enter to reload the page in print mode.
+                  3. Open the browser's print dialog (Ctrl/Cmd + P).
+                  4. Select "Save as PDF" as the destination.
+                </aside>
+            </section>
+
+            <!-- The Problem -->
+            <section>
+                <h2>The Problem: A Broken System</h2>
+                <div class="two-columns">
+                    <div>
+                        <h3>For Clients</h3>
+                        <ul>
+                            <li class="fragment">Struggling to find trusted, independent help.</li>
+                            <li class="fragment">Tired of impersonal, inflexible service companies.</li>
+                            <li class="fragment">Lack of transparency in pricing and service.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>For Maids</h3>
+                        <ul>
+                            <li class="fragment">Losing significant earnings to intermediary fees.</li>
+                            <li class="fragment">Lack of control over their schedule and clients.</li>
+                            <li class="fragment">Difficulty finding consistent, direct work.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Solution -->
+            <section>
+                <h2>Our Solution: Direct Connection</h2>
+                <div class="step fragment">
+                    <h3>A Platform Built on Trust</h3>
+                    <p>HydraClean facilitates direct, transparent connections between independent house maids and clients, bypassing traditional intermediaries.</p>
+                </div>
+                <div class="step fragment">
+                    <h3>Core Value Proposition</h3>
+                    <p><span class="highlight">Empowerment</span> for maids, <span class="highlight">transparency</span> and <span class="highlight">choice</span> for clients.</p>
+                </div>
+            </section>
+
+            <!-- MVP Features -->
+            <section>
+                <h2>The MVP: Key Features</h2>
+                 <div class="two-columns">
+                    <div>
+                        <ul>
+                            <li class="fragment">User Profiles & Vetting</li>
+                            <li class="fragment">Direct Search & Discovery</li>
+                            <li class="fragment">Simple Booking & Scheduling</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="fragment">In-App Messaging</li>
+                            <li class="fragment">Secure, Transparent Payments</li>
+                            <li class="fragment">Two-Way Reviews & Ratings</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advocating for our Clients -->
+            <section>
+                <h2>Advocating for Our Clients</h2>
+                <p>We've listened to your primary concern: <span class="highlight">Safety and Trust.</span></p>
+                <ul>
+                    <li class="fragment"><strong>"How do I know this person is safe?"</strong><br/>Our MVP includes initial vetting, with clear plans for comprehensive background checks.</li>
+                    <li class="fragment"><strong>"What if something goes wrong?"</strong><br/>We're building a system with clear policies and exploring platform insurance for peace of mind.</li>
+                    <li class="fragment"><strong>"Will I get a quality cleaning?"</strong><br/>Our two-way rating system ensures accountability and our platform will include a satisfaction guarantee.</li>
+                </ul>
+            </section>
+
+            <!-- Advocating for our Maids -->
+            <section>
+                <h2>Advocating for Our Maids</h2>
+                <p>We've listened to your primary concern: <span class="highlight">Your Safety and Your Income.</span></p>
+                 <ul>
+                    <li class="fragment"><strong>"How do you ensure my safety?"</strong><br/>Client ratings and in-app communication logs are just the start. We're building safety-first features.</li>
+                    <li class="fragment"><strong>"How do you guarantee I will be paid?"</strong><br/>Our secure payment system ensures you're paid promptly for your work, with dispute resolution support.</li>
+                    <li class="fragment"><strong>"What about last-minute cancellations?"</strong><br/>Our platform will enforce a fair cancellation policy that compensates you for your reserved time.</li>
+                </ul>
+            </section>
+
+            <!-- Success Metrics -->
+            <section>
+                <h2>Measuring MVP Success</h2>
+                <div class="step fragment">
+                    <h3>User Acquisition & Activation</h3>
+                    <p>Tracking the number of registered and active clients and maids.</p>
+                </div>
+                <div class="step fragment">
+                    <h3>Booking Completion Rate</h3>
+                    <p>Ensuring that requests turn into completed, paid jobs.</p>
+                </div>
+                 <div class="step fragment">
+                    <h3>Retention & Feedback</h3>
+                    <p>Measuring repeat usage and gathering qualitative feedback for the next iteration.</p>
+                </div>
+            </section>
+
+            <!-- The Future -->
+            <section>
+                <h2>Beyond the MVP</h2>
+                <p>Our 1-month goal is to launch a lean, effective platform. Our long-term vision is much bigger.</p>
+                <div class="two-columns">
+                    <div>
+                        <ul>
+                            <li class="fragment">Advanced Vetting</li>
+                            <li class="fragment">Platform Insurance</li>
+                            <li class="fragment">Dispute Resolution System</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="fragment">Recurring Bookings</li>
+                            <li class="fragment">Service Packages</li>
+                            <li class="fragment">Admin & Support Dashboards</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Closing Slide -->
+            <section class="title-slide">
+                <h1>Thank You</h1>
+                <p class="subtitle">Let's build a better way to connect.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <button id="fullscreen-btn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 14H3v5a2 2 0 0 0 2 2h5v-2H5v-5zm0-4h2V5h5V3H5a2 2 0 0 0-2 2v5zm14 4h-2v5h-5v2h5a2 2 0 0 0 2-2v-5zm0-4h-2V5h-5V3h5a2 2 0 0 1 2 2v5z"/></svg>
+    </button>
+    <button id="pdf-export-btn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        const pdfExportBtn = document.getElementById('pdf-export-btn');
+        pdfExportBtn.addEventListener('click', () => {
+            const url = window.location.href.split('?')[0] + '?print-pdf';
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+</html>
