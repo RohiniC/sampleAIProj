@@ -1,0 +1,171 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="390" height="844" fill="#F9F9F9"/>
+
+    <!-- iOS Status Bar -->
+    <g id="status-bar">
+        <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#333">9:41</text>
+        <path d="M348 14.3333C348 13.4223 347.249 12.6667 346.316 12.6667H343.684C342.751 12.6667 342 13.4223 342 14.3333V17.6667C342 18.5777 342.751 19.3333 343.684 19.3333H346.316C347.249 19.3333 348 18.5777 348 17.6667V14.3333Z" fill="#333"/>
+        <path d="M324 15.6667C324 14.7556 323.249 14 322.316 14H319.684C318.751 14 318 14.7556 318 15.6667V17.6667C318 18.5777 318.751 19.3333 319.684 19.3333H322.316C323.249 19.3333 324 18.5777 324 17.6667V15.6667Z" fill="#333"/>
+        <path d="M300 17.6667C300 16.7556 299.249 16 298.316 16H295.684C294.751 16 294 16.7556 294 17.6667V17.6667C294 18.5777 294.751 19.3333 295.684 19.3333H298.316C299.249 19.3333 300 18.5777 300 17.6667V17.6667Z" fill="#333"/>
+        <path d="M365.333 17.3333C366.252 17.3333 367 16.5856 367 15.6667V12.3333C367 11.4144 366.252 10.6667 365.333 10.6667H352.667C351.748 10.6667 351 11.4144 351 12.3333V15.6667C351 16.5856 351.748 17.3333 352.667 17.3333H353.833V19C353.833 19.9187 354.581 20.6667 355.5 20.6667H362.5C363.419 20.6667 364.167 19.9187 364.167 19V17.3333H365.333Z" fill="#333"/>
+    </g>
+
+    <!-- Header -->
+    <g id="header">
+        <text x="20" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="700" fill="#333333">Find Your</text>
+        <text x="20" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="700" fill="#333333">Cleaner</text>
+        <circle cx="350" cy="87" r="20" fill="#E0E0E0"/>
+        <path d="M350 82C348.9 82 348 82.9 348 84V85C348 86.65 349.35 88 351 88H349C347.35 88 346 89.35 346 91V92C346 92.55 346.45 93 347 93H353C353.55 93 354 92.55 354 92V91C354 89.35 352.65 88 351 88H352C352.55 88 353 87.55 353 87V84C353 82.9 352.1 82 351 82H350Z" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Search Bar -->
+    <g id="search-bar">
+        <rect x="20" y="140" width="285" height="50" rx="12" fill="#EFEFEF"/>
+        <path d="M36.815 164.002C36.815 160.023 40.023 156.815 44.002 156.815C47.981 156.815 51.189 160.023 51.189 164.002C51.189 167.981 47.981 171.189 44.002 171.189C40.023 171.189 36.815 167.981 36.815 164.002ZM49.59 169.59L54.5 174.5" stroke="#8E8E93" stroke-width="2" stroke-linecap="round"/>
+        <text x="65" y="171" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#8E8E93">Search by location...</text>
+        
+        <rect x="320" y="140" width="50" height="50" rx="12" fill="#A2D2FF"/>
+        <path d="M333 158H357M333 165H357M338 172H352" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Filter Chips -->
+    <g id="filter-chips">
+        <rect x="20" y="210" width="80" height="32" rx="16" fill="#A2D2FF"/>
+        <text x="60" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">All</text>
+        
+        <rect x="110" y="210" width="90" height="32" rx="16" fill="#EFEFEF"/>
+        <text x="155" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666" text-anchor="middle">Basic</text>
+        
+        <rect x="210" y="210" width="100" height="32" rx="16" fill="#EFEFEF"/>
+        <text x="260" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666" text-anchor="middle">Deep Clean</text>
+        
+        <rect x="320" y="210" width="50" height="32" rx="16" fill="#EFEFEF"/>
+        <text x="345" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666" text-anchor="middle">More</text>
+    </g>
+
+    <!-- Section Title -->
+    <g id="section-title">
+        <text x="20" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#333333">Top Rated Near You</text>
+        <text x="320" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#A2D2FF">See All</text>
+    </g>
+
+    <!-- Maid Card 1 - Featured -->
+    <g id="maid-card-1">
+        <rect x="20" y="300" width="350" height="140" rx="16" fill="#FFFFFF"/>
+        <filter id="shadow1">
+            <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+        <rect x="20" y="300" width="350" height="140" rx="16" fill="#FFFFFF" filter="url(#shadow1)"/>
+        
+        <!-- Featured Badge -->
+        <rect x="30" y="310" width="60" height="20" rx="10" fill="#FF8A80"/>
+        <text x="60" y="323" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">Featured</text>
+        
+        <circle cx="70" cy="370" r="30" fill="#FFDDC1"/>
+        <text x="58" y="378" font-size="30">👩</text>
+
+        <text x="120" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333333">Maria Garcia</text>
+        
+        <g id="rating-1">
+            <path d="M120 365 L123.5 372.5 L131 373.5 L125.5 378.5 L127 386 L120 382 L113 386 L114.5 378.5 L109 373.5 L116.5 372.5 Z" fill="#FFD700"/>
+            <text x="135" y="378" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666">4.9 (125 reviews)</text>
+        </g>
+
+        <text x="120" y="405" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#333333">$35<tspan font-weight="400" fill="#666">/hr</tspan></text>
+        
+        <text x="120" y="425" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">"Experienced professional with 10+ years..."</text>
+        
+        <path d="M340 330 C340 324.477 344.477 320 350 320 C355.523 320 360 324.477 360 330 C360 332.209 359.134 334.209 357.728 335.728L350 343.456L342.272 335.728C340.866 334.209 340 332.209 340 330Z" fill="#FF8A80"/>
+    </g>
+
+    <!-- Maid Card 2 -->
+    <g id="maid-card-2">
+        <rect x="20" y="460" width="350" height="120" rx="16" fill="#FFFFFF"/>
+        <filter id="shadow2">
+            <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+        <rect x="20" y="460" width="350" height="120" rx="16" fill="#FFFFFF" filter="url(#shadow2)"/>
+        
+        <circle cx="70" cy="520" r="30" fill="#C1E1FF"/>
+        <text x="58" y="528" font-size="30">👨</text>
+
+        <text x="120" y="485" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333333">John Davis</text>
+        
+        <g id="rating-2">
+            <path d="M120 505 L123.5 512.5 L131 513.5 L125.5 518.5 L127 526 L120 522 L113 526 L114.5 518.5 L109 513.5 L116.5 512.5 Z" fill="#FFD700"/>
+            <text x="135" y="518" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666">4.8 (98 reviews)</text>
+        </g>
+
+        <text x="120" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#333333">$30<tspan font-weight="400" fill="#666">/hr</tspan></text>
+        
+        <text x="120" y="565" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">"Reliable and thorough, available weekends"</text>
+        
+        <path d="M340 490 C340 484.477 344.477 480 350 480 C355.523 480 360 484.477 360 490 C360 492.209 359.134 494.209 357.728 495.728L350 503.456L342.272 495.728C340.866 494.209 340 492.209 340 490Z" fill="#E0E0E0"/>
+    </g>
+
+    <!-- Maid Card 3 -->
+    <g id="maid-card-3">
+        <rect x="20" y="600" width="350" height="120" rx="16" fill="#FFFFFF"/>
+        <filter id="shadow3">
+            <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+        <rect x="20" y="600" width="350" height="120" rx="16" fill="#FFFFFF" filter="url(#shadow3)"/>
+        
+        <circle cx="70" cy="660" r="30" fill="#E8F5E8"/>
+        <text x="58" y="668" font-size="30">👩‍🦱</text>
+
+        <text x="120" y="625" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333333">Sarah Wilson</text>
+        
+        <g id="rating-3">
+            <path d="M120 645 L123.5 652.5 L131 653.5 L125.5 658.5 L127 666 L120 662 L113 666 L114.5 658.5 L109 653.5 L116.5 652.5 Z" fill="#FFD700"/>
+            <text x="135" y="658" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666">4.7 (76 reviews)</text>
+        </g>
+
+        <text x="120" y="685" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#333333">$28<tspan font-weight="400" fill="#666">/hr</tspan></text>
+        
+        <text x="120" y="705" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">"Eco-friendly cleaning, pet-friendly"</text>
+        
+        <path d="M340 630 C340 624.477 344.477 620 350 620 C355.523 620 360 624.477 360 630 C360 632.209 359.134 634.209 357.728 635.728L350 643.456L342.272 635.728C340.866 634.209 340 632.209 340 630Z" fill="#E0E0E0"/>
+    </g>
+
+    <!-- Bottom Navigation Bar -->
+    <g id="bottom-nav">
+        <rect y="760" width="390" height="84" fill="rgba(255,255,255,0.9)"/>
+        <defs>
+            <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+            </filter>
+        </defs>
+        <rect y="760" width="390" height="84" fill="rgba(255,255,255,0.9)" style="filter: url(#blur-filter);"/>
+        <line y1="760.5" x2="390" y2="760.5" stroke="#E0E0E0"/>
+
+        <!-- Home (Active) -->
+        <g id="nav-home">
+            <path d="M57 780 L77 780 L77 790 L69 790 L69 798 L65 798 L65 790 L57 790 Z" fill="#A2D2FF"/>
+            <text x="53" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#A2D2FF" font-weight="600">Home</text>
+        </g>
+
+        <!-- Bookings -->
+        <g id="nav-bookings">
+            <rect x="140" y="780" width="20" height="20" rx="4" stroke="#8E8E93" stroke-width="2"/>
+            <line x1="140" y1="786" x2="160" y2="786" stroke="#8E8E93" stroke-width="2"/>
+            <line x1="145" y1="778" x2="145" y2="782" stroke="#8E8E93" stroke-width="2"/>
+            <line x1="155" y1="778" x2="155" y2="782" stroke="#8E8E93" stroke-width="2"/>
+            <text x="128" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Bookings</text>
+        </g>
+
+        <!-- Messages -->
+        <g id="nav-messages">
+            <path d="M220 780 H240 V795 L235 795 L230 800 L225 795 H220 V780 Z" stroke="#8E8E93" stroke-width="2" fill="none"/>
+            <text x="212" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Messages</text>
+        </g>
+
+        <!-- Profile -->
+        <g id="nav-profile">
+            <circle cx="315" cy="787" r="8" stroke="#8E8E93" stroke-width="2"/>
+            <path d="M305 800 C305 795, 325 795, 325 800 Z" stroke="#8E8E93" stroke-width="2" fill="none"/>
+            <text x="300" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Profile</text>
+        </g>
+    </g>
+</svg>

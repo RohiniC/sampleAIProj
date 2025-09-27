@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AetherDocs - Periodic Table Onboarding</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #three-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        #ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            pointer-events: auto;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5em;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+        
+        .header .subtitle {
+            font-size: 1.4em;
+            color: #a0a0a0;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInUp 1s ease-out 2.5s forwards;
+        }
+        
+        .element-info {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 30px;
+            border-radius: 15px;
+            border: 1px solid #00d4ff;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+        
+        .element-info.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .element-info h3 {
+            color: #00d4ff;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .element-info .symbol {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 10px 0;
+            color: white;
+        }
+        
+        .element-info .number {
+            color: #a0a0a0;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 3s forwards;
+        }
+        
+        .control-btn {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+        
+        .control-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 20;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            border-top: 3px solid #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        .loading-text {
+            color: #00d4ff;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .intro-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 2s ease;
+        }
+        
+        .intro-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .intro-overlay h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+        
+        .intro-overlay p {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .start-btn {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .start-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5em; }
+            .header .subtitle { font-size: 1.1em; }
+            .controls { right: 20px; }
+            #ui-overlay { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <canvas id="three-canvas"></canvas>
+        
+        <div class="intro-overlay" id="intro-overlay">
+            <h2>Welcome to AetherDocs</h2>
+            <p>Explore the building blocks of knowledge in our interactive periodic table. Each element represents a core component of our AI-augmented documentation system.</p>
+            <button class="start-btn" onclick="startExperience()">Begin Journey</button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Elements...</div>
+        </div>
+        
+        <div id="ui-overlay">
+            <div class="header">
+                <h1>AetherDocs</h1>
+                <div class="subtitle">The Periodic Table of Knowledge</div>
+            </div>
+            
+            <div class="element-info" id="element-info">
+                <div class="number">1</div>
+                <div class="symbol">H</div>
+                <h3>Hydrogen</h3>
+                <p>The foundation of all documentation</p>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" onclick="resetView()">Reset View</button>
+                <button class="control-btn" onclick="showRandomElement()">Random Element</button>
+                <button class="control-btn" onclick="toggleAnimation()">Toggle Animation</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let scene, camera, renderer, controls;
+        let elements = [];
+        let animationId;
+        let isAnimating = true;
+        let hoveredElement = null;
+        
+        // Periodic table data with AetherDocs theme
+        const periodicData = [
+            { symbol: 'Do', name: 'Documentation', number: 1, x: 0, y: 0, color: '#ff6b6b', description: 'The foundation of knowledge' },
+            { symbol: 'Co', name: 'Collaboration', number: 2, x: 17, y: 0, color: '#4ecdc4', description: 'Real-time editing and sharing' },
+            { symbol: 'AI', name: 'Artificial Intelligence', number: 3, x: 0, y: 1, color: '#45b7d1', description: 'Smart content assistance' },
+            { symbol: 'Se', name: 'Search', number: 4, x: 1, y: 1, color: '#96ceb4', description: 'Intelligent content discovery' },
+            { symbol: 'Ve', name: 'Version Control', number: 5, x: 12, y: 1, color: '#ffeaa7', description: 'Track all changes' },
+            { symbol: 'In', name: 'Integration', number: 6, x: 13, y: 1, color: '#dda0dd', description: 'Connect with existing tools' },
+            { symbol: 'Pu', name: 'Publishing', number: 7, x: 14, y: 1, color: '#98d8c8', description: 'Multi-format output' },
+            { symbol: 'Ac', name: 'Access Control', number: 8, x: 15, y: 1, color: '#fd79a8', description: 'Secure permissions' },
+            { symbol: 'An', name: 'Analytics', number: 9, x: 16, y: 1, color: '#fdcb6e', description: 'Usage insights' },
+            { symbol: 'Mo', name: 'Mobile', number: 10, x: 17, y: 1, color: '#6c5ce7', description: 'Access anywhere' },
+            
+            // Second row
+            { symbol: 'Te', name: 'Templates', number: 11, x: 0, y: 2, color: '#fd79a8', description: 'Standardized structures' },
+            { symbol: 'Au', name: 'Automation', number: 12, x: 1, y: 2, color: '#fdcb6e', description: 'Workflow efficiency' },
+            { symbol: 'Ap', name: 'API', number: 13, x: 12, y: 2, color: '#00b894', description: 'Programmatic access' },
+            { symbol: 'Ch', name: 'Chat', number: 14, x: 13, y: 2, color: '#e17055', description: 'Integrated communication' },
+            { symbol: 'No', name: 'Notifications', number: 15, x: 14, y: 2, color: '#00cec9', description: 'Stay informed' },
+            { symbol: 'Ba', name: 'Backup', number: 16, x: 15, y: 2, color: '#a29bfe', description: 'Data protection' },
+            { symbol: 'Sy', name: 'Sync', number: 17, x: 16, y: 2, color: '#fd79a8', description: 'Cross-platform harmony' },
+            { symbol: 'Ex', name: 'Export', number: 18, x: 17, y: 2, color: '#fdcb6e', description: 'Data portability' },
+            
+            // Third row
+            { symbol: 'Wo', name: 'Workflow', number: 19, x: 0, y: 3, color: '#74b9ff', description: 'Process automation' },
+            { symbol: 'Re', name: 'Review', number: 20, x: 1, y: 3, color: '#fd79a8', description: 'Quality assurance' },
+            { symbol: 'Co', name: 'Comments', number: 21, x: 2, y: 3, color: '#fdcb6e', description: 'Collaborative feedback' },
+            { symbol: 'Hi', name: 'History', number: 22, x: 3, y: 3, color: '#55a3ff', description: 'Change tracking' },
+            { symbol: 'Ta', name: 'Tags', number: 23, x: 4, y: 3, color: '#fd79a8', description: 'Content organization' },
+            { symbol: 'Li', name: 'Links', number: 24, x: 5, y: 3, color: '#00b894', description: 'Knowledge connections' },
+            { symbol: 'Me', name: 'Media', number: 25, x: 6, y: 3, color: '#e17055', description: 'Rich content support' },
+            { symbol: 'Fo', name: 'Forms', number: 26, x: 7, y: 3, color: '#00cec9', description: 'Structured data entry' },
+            { symbol: 'Da', name: 'Dashboard', number: 27, x: 8, y: 3, color: '#a29bfe', description: 'Overview and metrics' },
+            { symbol: 'Ca', name: 'Calendar', number: 28, x: 9, y: 3, color: '#fd79a8', description: 'Schedule integration' },
+            { symbol: 'Ta', name: 'Tasks', number: 29, x: 10, y: 3, color: '#fdcb6e', description: 'Action items' },
+            { symbol: 'Us', name: 'Users', number: 30, x: 11, y: 3, color: '#74b9ff', description: 'Team management' }
+        ];
+        
+        function init() {
+            // Scene setup
+            scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x0a0a0a, 10, 100);
+            
+            // Camera setup
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 10, 20);
+            
+            // Renderer setup
+            renderer = new THREE.WebGLRenderer({ 
+                canvas: document.getElementById('three-canvas'),
+                antialias: true,
+                alpha: true 
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            
+            // Controls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.enableZoom = true;
+            controls.maxDistance = 50;
+            controls.minDistance = 5;
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(10, 10, 5);
+            directionalLight.castShadow = true;
+            directionalLight.shadow.mapSize.width = 2048;
+            directionalLight.shadow.mapSize.height = 2048;
+            scene.add(directionalLight);
+            
+            const pointLight = new THREE.PointLight(0x00d4ff, 0.5, 100);
+            pointLight.position.set(0, 15, 0);
+            scene.add(pointLight);
+            
+            // Create elements
+            createElements();
+            
+            // Event listeners
+            window.addEventListener('resize', onWindowResize);
+            renderer.domElement.addEventListener('mousemove', onMouseMove);
+            renderer.domElement.addEventListener('click', onElementClick);
+            
+            // Hide loading
+            document.getElementById('loading').style.display = 'none';
+            
+            // Start animation
+            animate();
+        }
+        
+        function createElements() {
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+            
+            periodicData.forEach((data, index) => {
+                // Create element geometry
+                const geometry = new THREE.BoxGeometry(1.5, 1.5, 0.3);
+                const material = new THREE.MeshPhongMaterial({ 
+                    color: data.color,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                
+                const cube = new THREE.Mesh(geometry, material);
+                
+                // Position elements in periodic table layout
+                cube.position.x = (data.x - 8.5) * 2;
+                cube.position.y = -(data.y - 1.5) * 2;
+                cube.position.z = 0;
+                
+                // Add text to element
+                const loader = new THREE.FontLoader();
+                // Note: In a real implementation, you'd load a font file
+                // For now, we'll use a simple approach with canvas texture
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 256;
+                canvas.height = 256;
+                
+                context.fillStyle = '#ffffff';
+                context.font = '48px Inter';
+                context.textAlign = 'center';
+                context.fillText(data.symbol, 128, 128);
+                context.font = '16px Inter';
+                context.fillText(data.number.toString(), 128, 200);
+                
+                const texture = new THREE.CanvasTexture(canvas);
+                const textMaterial = new THREE.MeshBasicMaterial({ 
+                    map: texture, 
+                    transparent: true 
+                });
+                const textGeometry = new THREE.PlaneGeometry(1.4, 1.4);
+                const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+                textMesh.position.z = 0.16;
+                
+                cube.add(textMesh);
+                
+                // Store data for interactions
+                cube.userData = data;
+                cube.castShadow = true;
+                cube.receiveShadow = true;
+                
+                // Add entrance animation
+                cube.position.z = -20;
+                cube.rotation.x = Math.random() * Math.PI;
+                cube.rotation.y = Math.random() * Math.PI;
+                
+                scene.add(cube);
+                elements.push(cube);
+                
+                // Animate entrance
+                setTimeout(() => {
+                    animateElementEntrance(cube, index);
+                }, index * 100);
+            });
+        }
+        
+        function animateElementEntrance(element, index) {
+            const targetZ = 0;
+            const duration = 1000;
+            const startTime = Date.now();
+            const startZ = element.position.z;
+            const startRotX = element.rotation.x;
+            const startRotY = element.rotation.y;
+            
+            function animateStep() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+                
+                element.position.z = startZ + (targetZ - startZ) * eased;
+                element.rotation.x = startRotX * (1 - eased);
+                element.rotation.y = startRotY * (1 - eased);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateStep);
+                }
+            }
+            
+            animateStep();
+        }
+        
+        function animate() {
+            animationId = requestAnimationFrame(animate);
+            
+            // Rotate elements slightly
+            if (isAnimating) {
+                elements.forEach((element, index) => {
+                    element.rotation.z += 0.005;
+                    element.position.y += Math.sin(Date.now() * 0.001 + index) * 0.002;
+                });
+            }
+            
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        
+        function onMouseMove(event) {
+            const mouse = new THREE.Vector2();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            
+            const raycaster = new THREE.Raycaster();
+            raycaster.setFromCamera(mouse, camera);
+            
+            const intersects = raycaster.intersectObjects(elements);
+            
+            // Reset previous hover
+            if (hoveredElement) {
+                hoveredElement.material.opacity = 0.8;
+                hoveredElement.scale.set(1, 1, 1);
+                hoveredElement = null;
+                document.getElementById('element-info').classList.remove('visible');
+            }
+            
+            if (intersects.length > 0) {
+                hoveredElement = intersects[0].object;
+                hoveredElement.material.opacity = 1;
+                hoveredElement.scale.set(1.1, 1.1, 1.1);
+                
+                // Show element info
+                showElementInfo(hoveredElement.userData);
+            }
+        }
+        
+        function onElementClick(event) {
+            if (hoveredElement) {
+                // Focus on clicked element
+                const targetPosition = hoveredElement.position.clone();
+                targetPosition.z += 5;
+                
+                animateCameraTo(targetPosition);
+            }
+        }
+        
+        function showElementInfo(data) {
+            const info = document.getElementById('element-info');
+            info.querySelector('.number').textContent = data.number;
+            info.querySelector('.symbol').textContent = data.symbol;
+            info.querySelector('h3').textContent = data.name;
+            info.querySelector('p').textContent = data.description;
+            info.classList.add('visible');
+        }
+        
+        function animateCameraTo(position) {
+            const startPosition = camera.position.clone();
+            const duration = 1500;
+            const startTime = Date.now();
+            
+            function animateStep() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                
+                camera.position.lerpVectors(startPosition, position, eased);
+                camera.lookAt(position.x, position.y, 0);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateStep);
+                }
+            }
+            
+            animateStep();
+        }
+        
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // Control functions
+        function startExperience() {
+            document.getElementById('intro-overlay').classList.add('hidden');
+        }
+        
+        function resetView() {
+            camera.position.set(0, 10, 20);
+            controls.reset();
+        }
+        
+        function showRandomElement() {
+            const randomElement = elements[Math.floor(Math.random() * elements.length)];
+            const targetPosition = randomElement.position.clone();
+            targetPosition.z += 5;
+            animateCameraTo(targetPosition);
+            showElementInfo(randomElement.userData);
+        }
+        
+        function toggleAnimation() {
+            isAnimating = !isAnimating;
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

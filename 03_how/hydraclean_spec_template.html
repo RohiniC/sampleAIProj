@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>HydraClean - Project Specification</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
+    
+    <style>
+        :root {
+            --r-background-color: #ffffff;
+            --r-main-font: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --r-heading-font: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --r-main-color: #2c3e50;
+            --r-heading-color: #1a252f;
+            --r-link-color: #3498db;
+            --r-link-color-hover: #2980b9;
+            --r-selection-background-color: rgba(52, 152, 219, 0.3);
+            --r-selection-color: #2c3e50;
+            --r-heading1-size: 3.3em;
+            --r-heading2-size: 2.4em;
+            --r-heading3-size: 1.95em;
+            --r-heading4-size: 1.65em;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        .reveal {
+            font-family: var(--r-main-font);
+            font-weight: 400;
+            color: var(--r-main-color);
+            font-size: 1.4em;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            font-family: var(--r-heading-font);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-transform: none;
+            text-shadow: none;
+            word-wrap: break-word;
+            color: var(--r-heading-color);
+        }
+
+        .reveal h1 {
+            font-size: var(--r-heading1-size);
+            margin-bottom: 0.5em;
+            color: #1a252f;
+        }
+
+        .reveal h2 {
+            font-size: var(--r-heading2-size);
+            margin-bottom: 0.4em;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.2em;
+        }
+
+        .reveal h3 {
+            font-size: var(--r-heading3-size);
+            margin-bottom: 0.3em;
+            color: #34495e;
+        }
+
+        /* Title slide styling */
+        .title-slide {
+            text-align: center !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            color: #2c3e50;
+            padding: 3em;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .title-slide h1 {
+            font-size: 4.2em;
+            margin-bottom: 0.3em;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.8em;
+            color: #7f8c8d;
+            margin-bottom: 1em;
+            font-weight: 400;
+        }
+
+        .title-slide .description {
+            font-size: 1.3em;
+            color: #5a6c7d;
+            margin-top: 1.5em;
+            line-height: 1.4;
+        }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 16px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Feature cards */
+        .feature-card {
+            background: #ffffff;
+            padding: 1.5em;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+            margin: 1em 0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h4 {
+            color: #3498db;
+            margin-bottom: 0.5em;
+            font-size: 1.2em;
+        }
+
+        /* User persona cards */
+        .persona-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 1.5em;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin: 1em 0;
+        }
+
+        .persona-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5em;
+        }
+
+        .persona-card .role {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Technical specs */
+        .tech-spec {
+            background: #ffffff;
+            padding: 1.2em;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            margin: 0.5em 0;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Code styling */
+        .reveal pre {
+            display: block;
+            position: relative;
+            width: 100%;
+            margin: 1em auto;
+            text-align: left;
+            font-size: 0.55em;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            line-height: 1.4em;
+            word-wrap: break-word;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+        }
+
+        .reveal code {
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            background: #f8f9fa;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            color: #3498db;
+            border: 1px solid #e9ecef;
+        }
+
+        /* Lists */
+        .reveal ul {
+            margin-left: 1em;
+        }
+
+        .reveal li {
+            margin-bottom: 0.5em;
+            line-height: 1.5;
+        }
+
+        .reveal li::marker {
+            color: #3498db;
+        }
+
+        /* Emphasis and highlights */
+        .highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .emphasis {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
+            padding: 0.3em 0.6em;
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+            font-weight: 500;
+        }
+
+        .success {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.1));
+            padding: 0.3em 0.6em;
+            border-radius: 6px;
+            border-left: 3px solid #27ae60;
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(230, 126, 34, 0.1));
+            padding: 0.3em 0.6em;
+            border-radius: 6px;
+            border-left: 3px solid #f39c12;
+            color: #e67e22;
+            font-weight: 500;
+        }
+
+        /* Two column layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+            align-items: start;
+        }
+
+        /* Three column layout */
+        .three-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5em;
+            align-items: start;
+        }
+
+        /* Diagram containers */
+        .diagram {
+            background: #ffffff;
+            padding: 1.5em;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Progress indicators */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1em 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            transition: width 0.3s ease;
+        }
+
+        /* Metrics cards */
+        .metric-card {
+            background: #ffffff;
+            padding: 1.5em;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+        }
+
+        .metric-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 0.2em;
+        }
+
+        .metric-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        .slide-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 0.8em;
+            color: #95a5a6;
+        }
+
+        /* Navigation hints */
+        .nav-hint {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.7em;
+            color: #95a5a6;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .reveal h1 { font-size: 2.4em; }
+            .reveal h2 { font-size: 1.8em; }
+            .reveal { font-size: 1.2em; }
+            .two-columns, .three-columns { grid-template-columns: 1fr; }
+            .logo { width: 60px; height: 60px; font-size: 1.2em; }
+        }
+
+        /* Fragment animations */
+        .fragment {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fragment.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Build reveal animation classes */
+        .build-reveal .step {
+            padding: 0.8em 1.2em;
+            margin: 0.5em 0;
+            background: #ffffff;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .build-reveal .step.highlight {
+            background: rgba(52, 152, 219, 0.05);
+            border-left-color: #3498db;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Title Slide -->
+            <section class="title-slide">
+                <div class="logo">HC</div>
+                <h1>HydraClean</h1>
+                <p class="subtitle">Direct House Maid Service Platform</p>
+                <div class="description">
+                    <p>Connecting clients with independent house maids</p>
+                    <p>Transparent, efficient, and trustworthy service</p>
+                </div>
+            </section>
+
+            <!-- Project Overview -->
+            <section>
+                <h2>Project Overview</h2>
+                <div class="build-reveal">
+                    <div class="step fragment fade-in">
+                        <h3>The Problem</h3>
+                        <p>Traditional cleaning services create <span class="highlight">barriers between clients and cleaners</span>, leading to higher costs and less personalized service</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Our Solution</h3>
+                        <p>Direct connection platform that <span class="highlight">eliminates intermediaries</span> while ensuring safety and quality</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Value Proposition</h3>
+                        <p><span class="highlight">For Clients:</span> Better service, transparent pricing, flexible scheduling</p>
+                        <p><span class="highlight">For Maids:</span> Higher earnings, schedule control, direct client relationships</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Personas -->
+            <section>
+                <h2>Target Users</h2>
+                <div class="two-columns">
+                    <div>
+                        <h3>Clients</h3>
+                        <div class="persona-card fragment fade-in">
+                            <h4>Alex Chen</h4>
+                            <div class="role">Busy Professional</div>
+                            <p>Senior project manager seeking efficient, reliable cleaning service with transparent pricing and quality verification.</p>
+                        </div>
+                        <div class="persona-card fragment fade-in">
+                            <h4>The Garcia Family</h4>
+                            <div class="role">Young Family</div>
+                            <p>Parents with young children looking for a trusted, regular cleaner who can become part of their family routine.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Service Providers</h3>
+                        <div class="persona-card fragment fade-in">
+                            <h4>Elena Petrova</h4>
+                            <div class="role">Experienced Professional</div>
+                            <p>15-year veteran cleaner seeking to build her own client base and maximize earnings without agency fees.</p>
+                        </div>
+                        <div class="persona-card fragment fade-in">
+                            <h4>Jordan Lee</h4>
+                            <div class="role">Side-Hustler</div>
+                            <p>Graduate student looking for flexible, high-paying gig work that fits around academic schedule.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Core Features -->
+            <section>
+                <h2>Core Features</h2>
+                <div class="three-columns">
+                    <div>
+                        <div class="feature-card fragment fade-in">
+                            <h4>🔐 Secure Authentication</h4>
+                            <p>Dual user registration with email verification and identity confirmation for maids</p>
+                        </div>
+                        <div class="feature-card fragment fade-in">
+                            <h4>🔍 Smart Discovery</h4>
+                            <p>Location-based search with detailed profiles, ratings, and availability</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="feature-card fragment fade-in">
+                            <h4>📅 Booking Management</h4>
+                            <p>Request-accept workflow with calendar integration and confirmation system</p>
+                        </div>
+                        <div class="feature-card fragment fade-in">
+                            <h4>💬 In-App Messaging</h4>
+                            <p>Secure communication between clients and maids after booking confirmation</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="feature-card fragment fade-in">
+                            <h4>💳 Transparent Payments</h4>
+                            <p>Clear pricing with platform fees, secure processing, and automated payouts</p>
+                        </div>
+                        <div class="feature-card fragment fade-in">
+                            <h4>⭐ Review System</h4>
+                            <p>Mutual rating system for both clients and maids to build trust and quality</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Architecture -->
+            <section>
+                <h2>Technical Architecture</h2>
+                <div class="two-columns">
+                    <div>
+                        <h3>Frontend</h3>
+                        <div class="tech-spec fragment fade-in">
+                            <strong>Framework:</strong> React Native / Flutter
+                        </div>
+                        <div class="tech-spec fragment fade-in">
+                            <strong>State Management:</strong> Redux / MobX
+                        </div>
+                        <div class="tech-spec fragment fade-in">
+                            <strong>UI Components:</strong> Custom design system
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Backend</h3>
+                        <div class="tech-spec fragment fade-in">
+                            <strong>API:</strong> Node.js / Express.js
+                        </div>
+                        <div class="tech-spec fragment fade-in">
+                            <strong>Database:</strong> PostgreSQL
+                        </div>
+                        <div class="tech-spec fragment fade-in">
+                            <strong>Payments:</strong> Stripe Connect
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Flow -->
+            <section>
+                <h2>User Journey</h2>
+                <div class="build-reveal">
+                    <div class="step fragment fade-in">
+                        <h3>Client Journey</h3>
+                        <p>Register → Search Maids → View Profiles → Request Service → Communicate → Pay → Review</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Maid Journey</h3>
+                        <p>Register → Create Profile → Set Availability → Receive Requests → Accept/Decline → Complete Service → Get Paid</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Platform Value</h3>
+                        <p>Facilitates connections, ensures safety, processes payments, and maintains quality through reviews</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Success Metrics -->
+            <section>
+                <h2>Success Metrics</h2>
+                <div class="three-columns">
+                    <div class="metric-card fragment fade-in">
+                        <div class="metric-number">80%</div>
+                        <div class="metric-label">User Activation</div>
+                        <p>Users who complete profile setup</p>
+                    </div>
+                    <div class="metric-card fragment fade-in">
+                        <div class="metric-number">70%</div>
+                        <div class="metric-label">Booking Completion</div>
+                        <p>Accepted bookings that result in payment</p>
+                    </div>
+                    <div class="metric-card fragment fade-in">
+                        <div class="metric-number">4.5+</div>
+                        <div class="metric-label">Average Rating</div>
+                        <p>Quality score for both user types</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Implementation Timeline -->
+            <section>
+                <h2>Implementation Timeline</h2>
+                <div class="build-reveal">
+                    <div class="step fragment fade-in">
+                        <h3>Week 1-2: Foundation</h3>
+                        <p>User authentication, basic profiles, and core database setup</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Week 3: Discovery</h3>
+                        <p>Search functionality, maid listings, and profile viewing</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Week 4: Booking & Payment</h3>
+                        <p>Request system, payment integration, and basic messaging</p>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Week 5-6: Polish & Launch</h3>
+                        <p>Review system, testing, and MVP deployment</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Risk Mitigation -->
+            <section>
+                <h2>Risk Mitigation</h2>
+                <div class="two-columns">
+                    <div>
+                        <h3>Safety & Trust</h3>
+                        <div class="emphasis fragment fade-in">
+                            <strong>Identity Verification:</strong> Email/phone confirmation for all users
+                        </div>
+                        <div class="success fragment fade-in">
+                            <strong>Review System:</strong> Mutual ratings build reputation
+                        </div>
+                        <div class="warning fragment fade-in">
+                            <strong>Dispute Resolution:</strong> Clear policies and support process
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Business Risks</h3>
+                        <div class="emphasis fragment fade-in">
+                            <strong>Market Validation:</strong> Start with local area, expand gradually
+                        </div>
+                        <div class="success fragment fade-in">
+                            <strong>Quality Control:</strong> Rating system and user feedback
+                        </div>
+                        <div class="warning fragment fade-in">
+                            <strong>Competition:</strong> Focus on direct connection advantage
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Next Steps -->
+            <section>
+                <h2>Ready to Build?</h2>
+                <div class="build-reveal">
+                    <div class="step fragment fade-in">
+                        <h3>Immediate Actions</h3>
+                        <ul>
+                            <li>Set up development environment</li>
+                            <li>Create user stories and wireframes</li>
+                            <li>Design database schema</li>
+                            <li>Plan authentication system</li>
+                        </ul>
+                    </div>
+                    <div class="step fragment fade-in">
+                        <h3>Success Factors</h3>
+                        <ul>
+                            <li>Focus on user experience</li>
+                            <li>Build trust through transparency</li>
+                            <li>Ensure safety and security</li>
+                            <li>Iterate based on feedback</li>
+                        </ul>
+                    </div>
+                    <div class="step fragment fade-in highlight">
+                        <h3>Let's Start Building</h3>
+                        <p>From concept to MVP in 6 weeks</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: false,
+            touch: true,
+            loop: false,
+            rtl: false,
+            navigationMode: 'default',
+            shuffle: false,
+            fragments: true,
+            fragmentInURL: true,
+            embedded: false,
+            help: true,
+            pause: true,
+            showNotes: false,
+            autoPlayMedia: null,
+            preloadIframes: null,
+            autoAnimate: true,
+            autoAnimateMatcher: null,
+            autoAnimateEasing: 'ease',
+            autoAnimateDuration: 1.0,
+            autoAnimateUnmatched: true,
+            autoSlide: 0,
+            autoSlideStoppable: true,
+            autoSlideMethod: null,
+            defaultTiming: null,
+            mouseWheel: false,
+            rollingLinks: false,
+            hideInactiveCursor: true,
+            hideCursorTime: 5000,
+            previewLinks: false,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            parallaxBackgroundImage: '',
+            parallaxBackgroundSize: '',
+            parallaxBackgroundRepeat: '',
+            parallaxBackgroundPosition: '',
+            parallaxBackgroundHorizontal: null,
+            parallaxBackgroundVertical: null,
+            viewDistance: 3,
+            mobileViewDistance: 2,
+            display: 'block',
+            hideAddressBar: true,
+            disableLayout: false,
+
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+
+        // Enhanced fragment management for build reveal
+        Reveal.on('fragmentshown', event => {
+            if (event.fragment.closest('.build-reveal')) {
+                event.fragment.classList.add('highlight');
+                setTimeout(() => {
+                    event.fragment.classList.remove('highlight');
+                }, 1000);
+            }
+        });
+
+        // Add custom keyboard shortcuts
+        Reveal.addKeyBinding({keyCode: 190, key: '.', description: 'Toggle pause'}, () => {
+            Reveal.togglePause();
+        });
+    </script>
+</body>
+</html>
