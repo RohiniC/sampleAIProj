@@ -1,0 +1,94 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="390" height="844" fill="#F9F9F9"/>
+
+    <!-- iOS Status Bar -->
+    <g id="status-bar">
+        <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#333">9:41</text>
+        <!-- Icons omitted for brevity -->
+    </g>
+
+    <!-- Header -->
+    <g id="header">
+        <text x="20" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="700" fill="#333333">Welcome, Maria!</text>
+        <circle cx="350" cy="65" r="20" fill="#FFDDC1"/>
+        <text x="342" y="72" font-size="20">👩</text>
+    </g>
+
+    <!-- New Booking Requests Section -->
+    <g id="new-requests">
+        <text x="20" y="130" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#333333">New Booking Requests</text>
+        <circle cx="250" cy="123" r="12" fill="#FF8A80"/>
+        <text x="246" y="127" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="white">1</text>
+
+        <!-- Request Card -->
+        <g id="request-card">
+            <rect x="20" y="150" width="350" height="160" rx="16" fill="#FFFFFF"/>
+            <filter id="shadow1">
+                <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.08"/>
+            </filter>
+            <rect x="20" y="150" width="350" height="160" rx="16" fill="#FFFFFF" filter="url(#shadow1)"/>
+
+            <circle cx="60" cy="190" r="25" fill="#E0E0E0"/>
+            <text x="52" y="197" font-size="25">👨🏻</text>
+            <text x="95" y="185" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333">David L.</text>
+            <text x="95" y="205" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">★★★★☆</text>
+
+            <line x1="40" y1="230" x2="350" y2="230" stroke="#EFEFEF"/>
+
+            <text x="40" y="255" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">🗓️ Oct 28, 2:00 PM</text>
+            <text x="40" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">🧹 Basic Cleaning (3hr)</text>
+
+            <rect x="195" y="245" width="70" height="40" rx="20" fill="#EFEFEF"/>
+            <text x="230" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#333" text-anchor="middle">Decline</text>
+
+            <rect x="280" y="245" width="70" height="40" rx="20" fill="#A2D2FF"/>
+            <text x="315" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">Accept</text>
+        </g>
+    </g>
+
+    <!-- Upcoming Bookings Section -->
+    <g id="upcoming-bookings">
+        <text x="20" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#333333">Upcoming Bookings</text>
+        <text x="320" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#A2D2FF">See All</text>
+
+        <!-- Upcoming Card -->
+        <g id="upcoming-card">
+            <rect x="20" y="380" width="350" height="100" rx="16" fill="#FFFFFF"/>
+            <circle cx="60" cy="430" r="25" fill="#C1E1FF"/>
+            <text x="52" y="437" font-size="25">👱‍♀️</text>
+            <text x="95" y="415" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333">Jane S.</text>
+            <text x="95" y="435" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">🗓️ Oct 26, 10:00 AM</text>
+            <text x="95" y="455" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">📍 123 Main St</text>
+            <path d="M345 420 L350 425 L345 430" stroke="#D0D0D0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
+
+    <!-- Bottom Navigation Bar -->
+    <g id="bottom-nav">
+        <rect y="760" width="390" height="84" fill="rgba(255,255,255,0.9)"/>
+        <line y1="760.5" x2="390" y2="760.5" stroke="#E0E0E0"/>
+        <!-- Home (Active) -->
+        <g id="nav-home">
+            <path d="M57 780 L77 780 L77 790 L69 790 L69 798 L65 798 L65 790 L57 790 Z" fill="#A2D2FF"/>
+            <text x="53" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#A2D2FF" font-weight="600">Home</text>
+        </g>
+        <!-- Schedule -->
+        <g id="nav-schedule">
+            <rect x="140" y="780" width="20" height="20" rx="4" stroke="#8E8E93" stroke-width="2"/>
+            <line x1="140" y1="786" x2="160" y2="786" stroke="#8E8E93" stroke-width="2"/>
+            <text x="128" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Schedule</text>
+        </g>
+        <!-- Messages -->
+        <g id="nav-messages">
+            <path d="M220 780 H240 V795 L230 798 L220 795 V780 Z" stroke="#8E8E93" stroke-width="2" fill="none"/>
+            <text x="212" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Messages</text>
+        </g>
+        <!-- Profile -->
+        <g id="nav-profile">
+            <circle cx="315" cy="787" r="8" stroke="#8E8E93" stroke-width="2"/>
+            <path d="M305 800 C305 795, 325 795, 325 800 Z" stroke="#8E8E93" stroke-width="2" fill="none"/>
+            <text x="300" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Profile</text>
+        </g>
+    </g>
+</svg>

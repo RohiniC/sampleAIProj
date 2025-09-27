@@ -1,0 +1,123 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="390" height="844" fill="#F9F9F9"/>
+
+    <!-- iOS Status Bar -->
+    <g id="status-bar">
+        <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#333">9:41</text>
+        <path d="M348 14.3333C348 13.4223 347.249 12.6667 346.316 12.6667H343.684C342.751 12.6667 342 13.4223 342 14.3333V17.6667C342 18.5777 342.751 19.3333 343.684 19.3333H346.316C347.249 19.3333 348 18.5777 348 17.6667V14.3333Z" fill="#333"/>
+        <path d="M324 15.6667C324 14.7556 323.249 14 322.316 14H319.684C318.751 14 318 14.7556 318 15.6667V17.6667C318 18.5777 318.751 19.3333 319.684 19.3333H322.316C323.249 19.3333 324 18.5777 324 17.6667V15.6667Z" fill="#333"/>
+        <path d="M300 17.6667C300 16.7556 299.249 16 298.316 16H295.684C294.751 16 294 16.7556 294 17.6667V17.6667C294 18.5777 294.751 19.3333 295.684 19.3333H298.316C299.249 19.3333 300 18.5777 300 17.6667V17.6667Z" fill="#333"/>
+        <path d="M365.333 17.3333C366.252 17.3333 367 16.5856 367 15.6667V12.3333C367 11.4144 366.252 10.6667 365.333 10.6667H352.667C351.748 10.6667 351 11.4144 351 12.3333V15.6667C351 16.5856 351.748 17.3333 352.667 17.3333H353.833V19C353.833 19.9187 354.581 20.6667 355.5 20.6667H362.5C363.419 20.6667 364.167 19.9187 364.167 19V17.3333H365.333Z" fill="#333"/>
+    </g>
+
+    <!-- Header -->
+    <g id="header">
+        <text x="20" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="700" fill="#333333">Find Your</text>
+        <text x="20" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="700" fill="#333333">Cleaner</text>
+        <circle cx="350" cy="87" r="20" fill="#E0E0E0"/>
+        <path d="M350 82C348.9 82 348 82.9 348 84V85C348 86.65 349.35 88 351 88H349C347.35 88 346 89.35 346 91V92C346 92.55 346.45 93 347 93H353C353.55 93 354 92.55 354 92V91C354 89.35 352.65 88 351 88H352C352.55 88 353 87.55 353 87V84C353 82.9 352.1 82 351 82H350Z" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Search Bar -->
+    <g id="search-bar">
+        <rect x="20" y="140" width="285" height="50" rx="12" fill="#EFEFEF"/>
+        <path d="M36.815 164.002C36.815 160.023 40.023 156.815 44.002 156.815C47.981 156.815 51.189 160.023 51.189 164.002C51.189 167.981 47.981 171.189 44.002 171.189C40.023 171.189 36.815 167.981 36.815 164.002ZM49.59 169.59L54.5 174.5" stroke="#8E8E93" stroke-width="2" stroke-linecap="round"/>
+        <text x="65" y="171" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#8E8E93">Zip Code or City</text>
+        
+        <rect x="320" y="140" width="50" height="50" rx="12" fill="#A2D2FF"/>
+        <path d="M333 158H357M333 165H357M338 172H352" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Section Title -->
+    <g id="section-title">
+        <text x="20" y="225" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#333333">Top Rated Near You</text>
+        <text x="320" y="225" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#A2D2FF">See All</text>
+    </g>
+
+    <!-- Maid Card 1 -->
+    <g id="maid-card-1">
+        <rect x="20" y="250" width="350" height="120" rx="16" fill="#FFFFFF"/>
+        <filter id="shadow1">
+            <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+        <rect x="20" y="250" width="350" height="120" rx="16" fill="#FFFFFF" filter="url(#shadow1)"/>
+        
+        <circle cx="70" cy="310" r="30" fill="#FFDDC1"/>
+        <text x="58" y="318" font-size="30">👩</text>
+
+        <text x="120" y="285" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333333">Maria G.</text>
+        
+        <g id="rating-1">
+            <path d="M120 305 L123.5 312.5 L131 313.5 L125.5 318.5 L127 326 L120 322 L113 326 L114.5 318.5 L109 313.5 L116.5 312.5 Z" fill="#FFD700"/>
+            <text x="135" y="318" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666">4.9 (125 reviews)</text>
+        </g>
+
+        <text x="120" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#333333">$35<tspan font-weight="400" fill="#666">/hr</tspan></text>
+        
+        <path d="M340 270 C340 264.477 344.477 260 350 260 C355.523 260 360 264.477 360 270 C360 272.209 359.134 274.209 357.728 275.728L350 283.456L342.272 275.728C340.866 274.209 340 272.209 340 270Z" fill="#FF8A80"/>
+    </g>
+
+    <!-- Maid Card 2 -->
+    <g id="maid-card-2">
+        <rect x="20" y="390" width="350" height="120" rx="16" fill="#FFFFFF"/>
+        <filter id="shadow2">
+            <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+        <rect x="20" y="390" width="350" height="120" rx="16" fill="#FFFFFF" filter="url(#shadow2)"/>
+        
+        <circle cx="70" cy="450" r="30" fill="#C1E1FF"/>
+        <text x="58" y="458" font-size="30">👨</text>
+
+        <text x="120" y="425" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333333">John D.</text>
+        
+        <g id="rating-2">
+            <path d="M120 445 L123.5 452.5 L131 453.5 L125.5 458.5 L127 466 L120 462 L113 466 L114.5 458.5 L109 453.5 L116.5 452.5 Z" fill="#FFD700"/>
+            <text x="135" y="458" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666">4.8 (98 reviews)</text>
+        </g>
+
+        <text x="120" y="485" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#333333">$30<tspan font-weight="400" fill="#666">/hr</tspan></text>
+        
+        <path d="M340 410 C340 404.477 344.477 400 350 400 C355.523 400 360 404.477 360 410 C360 412.209 359.134 414.209 357.728 415.728L350 423.456L342.272 415.728C340.866 414.209 340 412.209 340 410Z" fill="#E0E0E0"/>
+    </g>
+
+    <!-- Bottom Navigation Bar -->
+    <g id="bottom-nav">
+        <rect y="760" width="390" height="84" fill="rgba(255,255,255,0.8)"/>
+        <defs>
+            <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+            </filter>
+        </defs>
+        <rect y="760" width="390" height="84" fill="rgba(255,255,255,0.8)" style="filter: url(#blur-filter);"/>
+        <line y1="760.5" x2="390" y2="760.5" stroke="#E0E0E0"/>
+
+        <!-- Home (Active) -->
+        <g id="nav-home">
+            <path d="M57 780 L77 780 L77 790 L69 790 L69 798 L65 798 L65 790 L57 790 Z" fill="#A2D2FF"/>
+            <text x="53" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#A2D2FF" font-weight="600">Home</text>
+        </g>
+
+        <!-- Bookings -->
+        <g id="nav-bookings">
+            <rect x="140" y="780" width="20" height="20" rx="4" stroke="#8E8E93" stroke-width="2"/>
+            <line x1="140" y1="786" x2="160" y2="786" stroke="#8E8E93" stroke-width="2"/>
+            <line x1="145" y1="778" x2="145" y2="782" stroke="#8E8E93" stroke-width="2"/>
+            <line x1="155" y1="778" x2="155" y2="782" stroke="#8E8E93" stroke-width="2"/>
+            <text x="128" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Bookings</text>
+        </g>
+
+        <!-- Messages -->
+        <g id="nav-messages">
+            <path d="M220 780 H240 V795 L235 795 L230 800 L225 795 H220 V780 Z" stroke="#8E8E93" stroke-width="2" fill="none"/>
+            <text x="212" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Messages</text>
+        </g>
+
+        <!-- Profile -->
+        <g id="nav-profile">
+            <circle cx="315" cy="787" r="8" stroke="#8E8E93" stroke-width="2"/>
+            <path d="M305 800 C305 795, 325 795, 325 800 Z" stroke="#8E8E93" stroke-width="2" fill="none"/>
+            <text x="300" y="815" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8E8E93">Profile</text>
+        </g>
+    </g>
+</svg>

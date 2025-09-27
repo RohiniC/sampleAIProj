@@ -1,0 +1,70 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="390" height="844" fill="#FFFFFF"/>
+
+    <!-- iOS Status Bar -->
+    <g id="status-bar">
+        <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#333">9:41</text>
+        <path d="M348 14.3333C348 13.4223 347.249 12.6667 346.316 12.6667H343.684C342.751 12.6667 342 13.4223 342 14.3333V17.6667C342 18.5777 342.751 19.3333 343.684 19.3333H346.316C347.249 19.3333 348 18.5777 348 17.6667V14.3333Z" fill="#333"/>
+        <path d="M324 15.6667C324 14.7556 323.249 14 322.316 14H319.684C318.751 14 318 14.7556 318 15.6667V17.6667C318 18.5777 318.751 19.3333 319.684 19.3333H322.316C323.249 19.3333 324 18.5777 324 17.6667V15.6667Z" fill="#333"/>
+        <path d="M300 17.6667C300 16.7556 299.249 16 298.316 16H295.684C294.751 16 294 16.7556 294 17.6667V17.6667C294 18.5777 294.751 19.3333 295.684 19.3333H298.316C299.249 19.3333 300 18.5777 300 17.6667V17.6667Z" fill="#333"/>
+        <path d="M365.333 17.3333C366.252 17.3333 367 16.5856 367 15.6667V12.3333C367 11.4144 366.252 10.6667 365.333 10.6667H352.667C351.748 10.6667 351 11.4144 351 12.3333V15.6667C351 16.5856 351.748 17.3333 352.667 17.3333H353.833V19C353.833 19.9187 354.581 20.6667 355.5 20.6667H362.5C363.419 20.6667 364.167 19.9187 364.167 19V17.3333H365.333Z" fill="#333"/>
+    </g>
+
+    <!-- Header -->
+    <g id="header">
+        <path d="M28 65 L20 70 L28 75" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="35" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#333">Back</text>
+    </g>
+
+    <!-- Profile Header -->
+    <g id="profile-header" text-anchor="middle">
+        <circle cx="195" cy="140" r="50" fill="#FFDDC1"/>
+        <text x="195" y="158" font-size="50">👩</text>
+        <text x="195" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="bold" fill="#333">Maria Garcia</text>
+        <g id="rating">
+            <path d="M155 240 L158.5 247.5 L166 248.5 L160.5 253.5 L162 261 L155 257 L148 261 L149.5 253.5 L144 248.5 L151.5 247.5 Z" fill="#FFD700"/>
+            <text x="180" y="253" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666" text-anchor="start">4.9 (125 reviews)</text>
+        </g>
+        <text x="195" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="bold" fill="#333">$35 <tspan font-size="16" font-weight="normal">/ hour</tspan></text>
+    </g>
+
+    <!-- About Me Section -->
+    <g id="about-me">
+        <text x="20" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333">About Me</text>
+        <text font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#666">
+            <tspan x="20" y="355">I have been a professional cleaner for over 10 years.</tspan>
+            <tspan x="20" y="375">I am detail-oriented, reliable, and passionate about</tspan>
+            <tspan x="20" y="395">making homes sparkle. Client satisfaction is my top</tspan>
+            <tspan x="20" y="415">priority.</tspan>
+        </text>
+    </g>
+
+    <!-- Services Section -->
+    <g id="services">
+        <text x="20" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333">Services Offered</text>
+        <rect x="20" y="480" width="130" height="35" rx="17.5" fill="#E8F5FF"/>
+        <text x="85" y="503" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#007AFF" text-anchor="middle">Basic Cleaning</text>
+        <rect x="160" y="480" width="130" height="35" rx="17.5" fill="#E8F5FF"/>
+        <text x="225" y="503" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#007AFF" text-anchor="middle">Deep Cleaning</text>
+    </g>
+
+    <!-- Reviews Section -->
+    <g id="reviews">
+        <text x="20" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#333">Reviews</text>
+        <text x="330" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#A2D2FF">See All</text>
+        
+        <rect x="20" y="580" width="350" height="100" rx="16" fill="#F9F9F9"/>
+        <circle cx="55" cy="615" r="20" fill="#C1E1FF"/>
+        <text x="47" y="622" font-size="20">👱‍♀️</text>
+        <text x="85" y="610" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#333">Jane S.</text>
+        <text x="85" y="630" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">★★★★★</text>
+        <text x="85" y="655" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#333">"Maria was fantastic! So thorough and professional."</text>
+    </g>
+
+    <!-- CTA Button -->
+    <g id="cta-button">
+        <rect x="30" y="750" width="330" height="55" rx="27.5" fill="#FF8A80"/>
+        <text x="195" y="784" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">REQUEST SERVICE</text>
+    </g>
+</svg>

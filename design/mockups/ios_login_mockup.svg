@@ -1,0 +1,55 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="390" height="844" fill="#F9F9F9"/>
+
+    <!-- iOS Status Bar -->
+    <g id="status-bar">
+        <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#333">9:41</text>
+        <path d="M348 14.3333C348 13.4223 347.249 12.6667 346.316 12.6667H343.684C342.751 12.6667 342 13.4223 342 14.3333V17.6667C342 18.5777 342.751 19.3333 343.684 19.3333H346.316C347.249 19.3333 348 18.5777 348 17.6667V14.3333Z" fill="#333"/>
+        <path d="M324 15.6667C324 14.7556 323.249 14 322.316 14H319.684C318.751 14 318 14.7556 318 15.6667V17.6667C318 18.5777 318.751 19.3333 319.684 19.3333H322.316C323.249 19.3333 324 18.5777 324 17.6667V15.6667Z" fill="#333"/>
+        <path d="M300 17.6667C300 16.7556 299.249 16 298.316 16H295.684C294.751 16 294 16.7556 294 17.6667V17.6667C294 18.5777 294.751 19.3333 295.684 19.3333H298.316C299.249 19.3333 300 18.5777 300 17.6667V17.6667Z" fill="#333"/>
+        <path d="M365.333 17.3333C366.252 17.3333 367 16.5856 367 15.6667V12.3333C367 11.4144 366.252 10.6667 365.333 10.6667H352.667C351.748 10.6667 351 11.4144 351 12.3333V15.6667C351 16.5856 351.748 17.3333 352.667 17.3333H353.833V19C353.833 19.9187 354.581 20.6667 355.5 20.6667H362.5C363.419 20.6667 364.167 19.9187 364.167 19V17.3333H365.333Z" fill="#333"/>
+    </g>
+
+    <!-- Logo and Tagline -->
+    <g id="logo-area">
+        <text x="195" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="40" font-weight="bold" fill="#333" text-anchor="middle">HydraClean</text>
+        <text x="195" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#666" text-anchor="middle">Your Home, Your Cleaner, Your Way</text>
+    </g>
+
+    <!-- Input Fields -->
+    <g id="input-fields">
+        <rect x="30" y="280" width="330" height="55" rx="12" fill="#EFEFEF"/>
+        <text x="45" y="314" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#8E8E93">Email</text>
+
+        <rect x="30" y="350" width="330" height="55" rx="12" fill="#EFEFEF"/>
+        <text x="45" y="384" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#8E8E93">Password</text>
+    </g>
+
+    <!-- Login Button -->
+    <g id="login-button">
+        <rect x="30" y="435" width="330" height="55" rx="27.5" fill="#FF8A80"/>
+        <text x="195" y="469" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">LOGIN</text>
+    </g>
+
+    <!-- Forgot Password -->
+    <text x="195" y="515" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#A2D2FF" text-anchor="middle">Forgot Password?</text>
+
+    <!-- Separator -->
+    <g id="separator">
+        <line x1="30" y1="600" x2="170" y2="600" stroke="#D0D0D0"/>
+        <text x="195" y="605" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#B0B0B0" text-anchor="middle">or</text>
+        <line x1="220" y1="600" x2="360" y2="600" stroke="#D0D0D0"/>
+    </g>
+
+    <!-- Sign Up Section -->
+    <g id="signup-section">
+        <text x="195" y="650" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#333" text-anchor="middle">Don't have an account?</text>
+        
+        <rect x="30" y="680" width="155" height="50" rx="25" stroke="#A2D2FF" stroke-width="2" fill="none"/>
+        <text x="107.5" y="711" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#A2D2FF" text-anchor="middle">I'm a Client</text>
+
+        <rect x="205" y="680" width="155" height="50" rx="25" stroke="#A2D2FF" stroke-width="2" fill="none"/>
+        <text x="282.5" y="711" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#A2D2FF" text-anchor="middle">I'm a Maid</text>
+    </g>
+</svg>
